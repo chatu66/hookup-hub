@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Throne — Flirt. Vibe. Wait for the Throne.</title>
+
+  <!-- Tailwind CDN for quick styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Extra visual polish */
+    :root{
+      --neon: linear-gradient(90deg,#ff7ad1,#8b5cf6 40%, #60a5fa 100%);
+      --glass: rgba(255,255,255,0.04);
+    }
+    body {
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(139,92,246,0.09), transparent 10%),
+                  radial-gradient(1000px 400px at 90% 90%, rgba(255,122,209,0.05), transparent 10%),
+                  #06060a;
+      color: #e6edf3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    .glow { background: -webkit-linear-gradient(#fff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 6px 18px rgba(139,92,246,0.25)); }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.04); backdrop-filter: blur(6px); }
+    .throne-badge { background: linear-gradient(90deg,#ff7ad1,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
+    /* small animations */
+    .floaty { animation: floaty 6s ease-in-out infinite; }
+    @keyframes floaty { 0%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} 100%{ transform: translateY(0);} }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-6 py-12">
+  <div class="w-full max-w-6xl grid grid-cols-12 gap-6">
+
+    <!-- LEFT: Branding + Features -->
+    <section class="col-span-5 flex flex-col gap-6">
+      <div class="card p-6 rounded-2xl shadow-2xl">
+        <div class="flex items-start gap-4">
+          <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-500 via-purple-600 to-sky-400 flex items-center justify-center text-2xl font-black">
+            👑
+          </div>
+          <div>
+            <h1 class="text-2xl font-extrabold glow">The Throne</h1>
+            <p class="mt-1 text-sm text-slate-300">Flirt. Vibe. Wait for the Throne. <span class="throne-badge">You don't link — the Throne does.</span></p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-3">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg card flex items-center justify-center">✨</div>
+            <div>
+              <div class="text-sm font-semibold">One Big Arena</div>
+              <div class="text-xs text-slate-300">Public chat where Gen Z vibes, posts pics & reacts — no phones, no links.</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg card flex items-center justify-center">🔒</div>
+            <div>
+              <div class="text-sm font-semibold">No Links or Numbers</div>
+              <div class="text-xs text-slate-300">The UI blocks/flags URLs & phone numbers — keeps the vibe safe & private.</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg card flex items-center justify-center">💌</div>
+            <div>
+              <div class="text-sm font-semibold">Request Link (Throne Only)</div>
+              <div class="text-xs text-slate-300">Spot a crush? Hit Request Link — it goes to the Throne (that's you). You decide who meets.</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg card flex items-center justify-center">🎮</div>
+            <div>
+              <div class="text-sm font-semibold">Mini-games & Vibes</div>
+              <div class="text-xs text-slate-300">Truth/Dare, Vibe-checks, trending hearts — keep the chat sticky.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <button id="joinDemo" class="px-4 py-2 rounded-full font-semibold shadow-lg hover:scale-105 transition transform" style="background:linear-gradient(90deg,#ff7ad1,#8b5cf6);">Enter the Arena</button>
+          <button id="broadcastBtn" class="px-4 py-2 rounded-full border border-white/6 text-sm text-slate-200">Throne Broadcast</button>
+        </div>
+
+        <p class="mt-4 text-xs text-slate-400">Pro tip: Save this file to your repo as <code>index.html</code>. For real connections, connect the Request Link flow to your admin dashboard (backend).</p>
+      </div>
+
+      <!-- Branding card -->
+      <div class="card p-4 rounded-2xl flex items-center justify-between">
+        <div>
+          <div class="text-sm text-slate-300">Brand</div>
+          <div class="text-lg font-bold">The Throne Network</div>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-400">Repo:</div>
+          <div class="text-sm font-mono">the-throne-network</div>
+        </div>
+      </div>
+
+      <div class="card p-4 rounded-2xl">
+        <div class="text-sm font-semibold">How to use (developer notes)</div>
+        <ol class="mt-2 text-xs text-slate-300 list-decimal ml-4 space-y-1">
+          <li>Hook "Request Link" to your admin API. The frontend simulates the request currently.</li>
+          <li>Implement server-side filters for numbers/links — client-side filtering is just UX help.</li>
+          <li>Store images in Cloudinary or S3 & messages in MongoDB. Use Socket.io for realtime chat.</li>
+          <li>Keep Throne identity private — use pseudonymous admin tokens for approvals.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- RIGHT: Chat UI demo -->
+    <main class="col-span-7 card p-6 rounded-3xl shadow-2xl flex flex-col h-[80vh]">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-xl">TH</div>
+          <div>
+            <div class="text-sm text-slate-300">Public Arena</div>
+            <div class="text-lg font-bold">Late Night Vibes</div>
+          </div>
+        </div>
+        <div class="text-right text-xs text-slate-400">
+          <div>Online: <span id="onlineCount">142</span></div>
+          <div class="text-rose-400">No phones • No links • Throne sees</div>
+        </div>
+      </div>
+
+      <!-- messages -->
+      <div id="messages" class="mt-4 flex-1 overflow-y-auto py-4 space-y-3">
+        <!-- sample messages -->
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-pink-400/80"></div>
+          <div>
+            <div class="text-xs text-slate-400">Lona • 23m</div>
+            <div class="mt-1 card p-3 rounded-xl inline-block">Who’s down for a vibe-check game later? 🔥</div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 self-end justify-end">
+          <div>
+            <div class="text-xs text-slate-400 text-right">You • now</div>
+            <div class="mt-1 p-3 rounded-xl inline-block" style="background:linear-gradient(90deg,#0f172a,#111827); border:1px solid rgba(255,255,255,0.03)">I'm watching the Arena 👁️</div>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-indigo-600"></div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-rose-400/80"></div>
+          <div>
+            <div class="text-xs text-slate-400">Jay • 5m</div>
+            <div class="mt-1 card p-3 rounded-xl inline-block">Posted a pic ✨ <img src="https://picsum.photos/seed/px1/220/120" alt="demo" class="mt-2 rounded-lg w-full object-cover" /></div>
+            <div class="mt-2 flex gap-2 text-xs">
+              <button class="reactBtn px-2 py-1 rounded-full text-xs card">❤️ 12</button>
+              <button class="requestBtn px-2 py-1 rounded-full text-xs" data-from="guest" data-to="Jay">Request Link 👑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- input -->
+      <div class="mt-4">
+        <form id="chatForm" class="flex gap-3 items-center">
+          <input id="chatInput" autocomplete="off" placeholder="Say something flirty, playful, or drop a GIF..." class="flex-1 p-3 rounded-xl card outline-none" />
+          <label class="cursor-pointer">
+            <input id="fileInput" type="file" accept="image/*" class="hidden" />
+            <div class="px-3 py-2 card rounded-full">📸</div>
+          </label>
+          <button id="sendBtn" type="submit" class="px-4 py-2 rounded-full" style="background:linear-gradient(90deg,#60a5fa,#8b5cf6);">Send</button>
+        </form>
+        <div id="warning" class="mt-2 text-xs text-amber-300 hidden">Uh-uh — links & phone numbers aren't allowed. The Throne likes mystery.</div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Request Link -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+    <div class="w-full max-w-md card p-6 rounded-2xl">
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="text-sm text-slate-300">Request Link</div>
+          <div class="text-lg font-bold">Ask the Throne to connect you</div>
+        </div>
+        <button id="closeModal" class="text-slate-400">✖</button>
+      </div>
+
+      <form id="requestForm" class="mt-4 space-y-3">
+        <div>
+          <label class="text-xs text-slate-300">Your message to the Throne (optional)</label>
+          <textarea id="reqMsg" maxlength="280" rows="4" class="w-full mt-1 p-3 rounded-lg card"></textarea>
+        </div>
+        <div class="flex items-center justify-between gap-3">
+          <div class="text-xs text-slate-400">This goes privately to the Throne. You won't see who they are.</div>
+          <button id="sendRequest" class="px-4 py-2 rounded-full" style="background:linear-gradient(90deg,#ff7ad1,#8b5cf6);">Send to Throne</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tiny Toast -->
+  <div id="toast" class="fixed right-6 bottom-6 bg-gradient-to-br from-purple-600 to-pink-500 text-white px-4 py-3 rounded-lg shadow-lg hidden">Sent to the Throne 👑</div>
+
+  <script>
+    // Basic demo JS: client-side UX only (connect to backend for real).
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const messages = document.getElementById('messages');
+    const warning = document.getElementById('warning');
+    const requestBtns = () => document.querySelectorAll('.requestBtn');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const sendRequest = document.getElementById('sendRequest');
+    const toast = document.getElementById('toast');
+    const broadcastBtn = document.getElementById('broadcastBtn');
+    const joinDemo = document.getElementById('joinDemo');
+
+    // Regex to detect phone numbers and URLs (simple, client-side)
+    const urlPhoneRegex = /(https?:\/\/|www\.|@|(?:\+?\d{6,})|(?:\b\d{3}[-.\s]?\d{3}[-.\s]?\d{3,}\b))/i;
+
+    // handle new message
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+      if (urlPhoneRegex.test(text)) {
+        // block client-side and show warning
+        warning.classList.remove('hidden');
+        setTimeout(()=> warning.classList.add('hidden'), 4200);
+        chatInput.value = '';
+        return;
+      }
+      // append message (demo)
+      const el = document.createElement('div');
+      el.className = 'flex items-start gap-3';
+      el.innerHTML = `
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-indigo-600"></div>
+        <div>
+          <div class="text-xs text-slate-400">You • now</div>
+          <div class="mt-1 p-3 rounded-xl inline-block" style="background:linear-gradient(90deg,#0f172a,#111827); border:1px solid rgba(255,255,255,0.03)">${escapeHtml(text)}</div>
+        </div>
+      `;
+      messages.appendChild(el);
+      messages.scrollTop = messages.scrollHeight;
+      chatInput.value = '';
+    });
+
+    // Escape HTML helper
+    function escapeHtml(s) {
+      return s.replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    }
+
+    // Request Link simulation
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('.requestBtn')) {
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+      }
+    });
+    closeModal.addEventListener('click', () => hideModal());
+    function hideModal(){
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+    }
+
+    // send request to Throne (demo)
+    sendRequest.addEventListener('click', (e) => {
+      e.preventDefault();
+      // In production: POST to /api/requests with auth token so the Throne (you) sees it
+      hideModal();
+      showToast('Your request reached the Throne 👑');
+    });
+
+    function showToast(text='Sent to the Throne 👑'){
+      toast.textContent = text;
+      toast.classList.remove('hidden');
+      setTimeout(()=> toast.classList.add('hidden'), 3500);
+    }
+
+    // Broadcast button (simulated mysterious Throne message)
+    broadcastBtn.addEventListener('click', () => {
+      const banner = document.createElement('div');
+      banner.className = 'p-3 rounded-xl card text-center font-semibold glow floaty';
+      banner.style.border = '1px solid rgba(255,255,255,0.03)';
+      banner.textContent = randomBroadcast();
+      document.body.appendChild(banner);
+      banner.style.position = 'fixed';
+      banner.style.left = '50%';
+      banner.style.transform = 'translateX(-50%)';
+      banner.style.top = '6%';
+      setTimeout(()=> banner.remove(), 4200);
+    });
+
+    function randomBroadcast(){
+      const lines = [
+        "The Throne sees hearts move in the dark... 👁️",
+        "A match may bloom tonight under neon skies. 🔥",
+        "The Arena hums — keep vibing and mind your manners. 💫",
+        "Some souls will meet. Patience is a pretty crime. 😈"
+      ];
+      return lines[Math.floor(Math.random()*lines.length)];
+    }
+
+    // demo: Enter the Arena
+    joinDemo.addEventListener('click', () => {
+      showToast('Welcome, Viber. The Throne watches. 👑');
+    });
+
+    // small helper: block paste of links
+    chatInput.addEventListener('paste', (e) => {
+      const paste = (e.clipboardData || window.clipboardData).getData('text');
+      if (urlPhoneRegex.test(paste)) {
+        e.preventDefault();
+        warning.classList.remove('hidden');
+        setTimeout(()=> warning.classList.add('hidden'), 4200);
+      }
+    });
+
+    // small safety: block file with large size (demo only)
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', (e) => {
+      const f = e.target.files[0];
+      if (!f) return;
+      if (f.size > 5 * 1024 * 1024) {
+        alert('Image too large. Please keep under 5MB.');
+        e.target.value = '';
+        return;
+      }
+      // show preview (demo)
+      const url = URL.createObjectURL(f);
+      const el = document.createElement('div');
+      el.className = 'flex items-start gap-3';
+      el.innerHTML = `
+        <div class="w-10 h-10 rounded-full bg-pink-400/80"></div>
+        <div>
+          <div class="text-xs text-slate-400">You • now</div>
+          <div class="mt-1 card p-3 rounded-xl inline-block"><img src="${url}" class="rounded-lg w-64 h-auto" /></div>
+        </div>
+      `;
+      messages.appendChild(el);
+      messages.scrollTop = messages.scrollHeight;
+      e.target.value = '';
+    });
+
+    // Optional: update online count (demo)
+    let oc = parseInt(document.getElementById('onlineCount').textContent);
+    setInterval(()=> {
+      oc = Math.max(50, oc + (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random()*4));
+      document.getElementById('onlineCount').textContent = oc;
+    }, 3000);
+  </script>
+</body>
+</html>
